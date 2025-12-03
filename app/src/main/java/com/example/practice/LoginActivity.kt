@@ -1,8 +1,10 @@
 package com.example.practice
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -82,7 +84,14 @@ fun LoginBody(){
     var visibility by remember {mutableStateOf(false)}
 
     val context = LocalContext.current
-    //val activity = context as Activity
+    val activity = context as? Activity
+
+    val sharedPreference = context.getSharedPreferences("User", Context.MODE_PRIVATE)
+    //val editor = sharedPreference.edit()
+
+    var localUsername:String? = sharedPreference.getString("username","ginish") //?-nullable value huna ni sakcha nahunanisakcha
+    var localPassword:String? = sharedPreference.getString("password","paudel")
+
 
     //Snackbar
     val snackbarHostState = remember{ SnackbarHostState() }
@@ -205,16 +214,15 @@ fun LoginBody(){
                 }
                 Button(
                     onClick={
-                        if(password=="correct"){
-                            val intent = Intent(context, DashboardActivity::class.java)
-                            intent.putExtra("userName", userName)
-                            context.startActivity(intent)
-                            //activity.finish()
-                        }else{
-                            coroutineScope.launch{
-                                snackbarHostState.showSnackbar("Incorrect credentials!!")
+                            if (localUsername==userName && localPassword==password) {
+                                val intent = Intent(context, DashboardActivity::class.java)
+                                intent.putExtra("userName", userName)
+                                context.startActivity(intent)
+                                activity?.finish()
+                            }else{
+                                Toast.makeText(context,"Invalid login", Toast.LENGTH_SHORT).show()
                             }
-                        }
+
                     },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color.Blue

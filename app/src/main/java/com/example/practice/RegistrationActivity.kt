@@ -2,8 +2,10 @@ package com.example.practice
 
 import android.app.Activity
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -78,14 +80,18 @@ fun Register(){
     var password by remember {mutableStateOf("")}
     //Password Visibility
     var visibility by remember {mutableStateOf(false)}
+
+    //Local Storage - SHared Preference
+    val context = LocalContext.current
+    val sharedPreference = context.getSharedPreferences("User", Context.MODE_PRIVATE) // "User" is a theoretical representation of a table but actually is a file
+    val editor = sharedPreference.edit()
     
     var selectedDate by remember { mutableStateOf("") }
     //Terms and Conditions
     var terms by remember {mutableStateOf(false)}
 
     //Date
-    val context = LocalContext.current
-    //val activity = context as Activity
+    val activity = context as Activity
     var calendar = Calendar.getInstance()
     var year = calendar.get(Calendar.YEAR)
     var month = calendar.get(Calendar.MONTH)
@@ -102,6 +108,9 @@ fun Register(){
     var selectedText by remember{mutableStateOf("Select Option")}
     val countries= listOf("Nepal","India","China","Pakistan","Bhutan")
     var textFieldSize by remember { mutableStateOf(androidx.compose.ui.geometry.Size.Zero) }
+
+
+
 
     Scaffold {
             padding->
@@ -285,9 +294,28 @@ fun Register(){
             }
             Button(
                 onClick={
-                    val intent = Intent(context, LoginActivity::class.java)
-                            context.startActivity(intent)
-                        },
+                    if(terms){
+                        val storedUsername = sharedPreference.getString("username", null)
+                        if (userName.isBlank() || password.isBlank()) {
+                            Toast.makeText(context, "Username and password cannot be empty.", Toast.LENGTH_SHORT).show()
+                        } else if (!terms){
+                            Toast.makeText(context, "Please agree to the terms and conditions.",Toast.LENGTH_SHORT).show()
+                        } else if (userName == storedUsername) {
+                            Toast.makeText(context, "User already exists. Please login.", Toast.LENGTH_SHORT).show()
+                        }
+                        else{
+                            editor.putString("username",userName)
+                            editor.putString("password",password)
+                            editor.putString("date",selectedDate)
+                            editor.apply()
+                            Toast.makeText(context, "Registration Successful.", Toast.LENGTH_SHORT).show()
+                            activity.finish()
+                        }
+                    }
+                    else{
+                            Toast.makeText(context, "Please agree to the terms and conditions.",Toast.LENGTH_SHORT).show()
+                    }   
+                     },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Blue
                 ),
