@@ -1,6 +1,7 @@
 package com.example.practice
 
 import android.app.Activity
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -10,7 +11,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -33,7 +36,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.practice.ui.theme.BG
 import com.example.practice.ui.theme.PracticeTheme
+import com.example.practice.ProfileScreen1
 import com.google.common.collect.Multimaps.index
 
 class DashboardActivity : ComponentActivity() {
@@ -65,38 +70,6 @@ fun DashboardBody() {
     //val userName = activity.intent.getStringExtra("userName")
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Blue.copy(alpha=0.6f),
-                    titleContentColor = Color.White,
-                    navigationIconContentColor = Color.Gray
-                ),
-                title = {
-                    Text("Dashboard")
-                },
-                navigationIcon = {
-                    IconButton(onClick = {
-                        activity?.finish()
-                    }) {
-                        Icon(
-                            painter = painterResource(R.drawable.baseline_arrow_back_ios_24),
-                            contentDescription = null
-                        )
-                    }
-                },
-                actions = {
-                    IconButton(onClick = {}) {
-                        Icon(
-                            painter = painterResource(R.drawable.baseline_search_24),
-                            contentDescription = null
-                        )
-
-                    }
-                },
-
-                )
-        },
         bottomBar = {
             NavigationBar{
                 bottomNavitems.forEachIndexed { index, item ->
@@ -121,13 +94,14 @@ fun DashboardBody() {
         Box(
             modifier = Modifier
                 .padding(padding)
-                .fillMaxSize(),
+                .fillMaxSize()
+                            ,
             contentAlignment = Alignment.Center
         ) {
             when (selectedIndex) {
-                0 -> Home()
-                1 -> Search()
-                2 -> Profile()
+                0 -> HomeScreen1()
+                1 -> SearchScreen1()
+                2 -> ProfileScreen1()
             }
         }
     }
@@ -141,13 +115,6 @@ fun previewbody(){
 
 @Composable
 fun Home(){
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = Color.Gray)
-    ) {
-            Text("Home")
-    }
 }
 @Composable
 fun Search() {

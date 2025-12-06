@@ -14,3 +14,8 @@ val Unique = Color(0xFF7182E7)
 
 val CardBack= Color(0xFF70F694)
 val Grey = Color(0xF7D4F0F5)
+val  CardColor = Color(0xF7DADADA)
+
+val  Text = Color(0xF7B69D9D)
+val BG = Color(0xFFFFE8A2)
+val Orange =  Color(0xFFFF9800)

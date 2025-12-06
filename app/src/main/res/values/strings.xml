@@ -5,4 +5,7 @@
     <string name="title_activity_registration">RegistrationActivity</string>
     <string name="title_activity_dashboard">DashboardActivity</string>
     <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_home_screen">HomeScreen</string>
+    <string name="title_activity_profile_screen">ProfileScreen</string>
+    <string name="title_activity_search_screen">SearchScreen</string>
 </resources>
