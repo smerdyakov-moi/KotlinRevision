@@ -65,13 +65,12 @@ fun SearchScreen1(){
         Product(R.drawable.baseline_heart_broken_24, "Sonic Headphones", "PKR 800", "PKR 1200"),
         Product(R.drawable.key, "Vintage Headphones", "PKR 800", "PKR 1200"),
         Product(R.drawable.baseline_local_shipping_24, "Multi Earphones", "PKR 800", "PKR 1200"),
-        Product(R.drawable.settings, "Wireless Earphones", "PKR 800", "PKR 1200"),
+        Product(R.drawable.settings, "Wireless Earphones", "PKR 800", "PKR 1200")
     )
 
-    Scaffold {
-        LazyVerticalGrid(
+    LazyVerticalGrid(
             columns = GridCells.Fixed(2),
-            modifier = Modifier.fillMaxSize().padding(it).padding(horizontal = 16.dp),
+            modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
@@ -113,7 +112,6 @@ fun SearchScreen1(){
                 ProductCard(product = product)
             }
         }
-    }
 }
 
 @Composable

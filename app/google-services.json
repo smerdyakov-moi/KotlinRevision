@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "380327577906",
+    "firebase_url": "https://ai37a-rentr-default-rtdb.firebaseio.com",
+    "project_id": "ai37a-rentr",
+    "storage_bucket": "ai37a-rentr.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380327577906:android:7791022b605f126f30af2b",
+        "android_client_info": {
+          "package_name": "com.example.practice"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZWnCgNB3qbECpJEOtp5ZzveEuT-9fckw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
