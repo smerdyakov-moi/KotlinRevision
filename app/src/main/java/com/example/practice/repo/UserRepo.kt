@@ -1,6 +1,7 @@
 package com.example.practice.repo
 
 import com.example.practice.model.UserModel
+import com.google.firebase.auth.FirebaseUser
 
 interface UserRepo {
 
@@ -11,7 +12,8 @@ interface UserRepo {
     fun logout(callback: (Boolean,String) -> Unit)
     fun getUserById(userId: String, callback: (Boolean, String, UserModel?) -> Unit )
     fun getAllUsers(callback: (Boolean, String, List<UserModel>) -> Unit)
-
+    fun deleteAccount(userId: String, callback: (Boolean, String) -> Unit)
+    fun getCurrentUser() : FirebaseUser?
     fun addUserToDatabase(userId: String, model: UserModel, callback: (Boolean, String) -> Unit)
 }
 

@@ -379,117 +379,117 @@ class ProfileScreen : ComponentActivity() {
     }
 }
 
-@Composable
-fun ProfileScreen1() {
-    data class Product(val image: Int, val label: String)
-    val listData = listOf(
-        Product(R.drawable.baseline_heart_broken_24, "Favorites"),
-        Product(R.drawable.baseline_local_shipping_24, "Orders"),
-        Product(R.drawable.baseline_list_24, "Shippings"),
-        Product(R.drawable.card, "Card"),
-        Product(R.drawable.pic, "Picture"),
-        Product(R.drawable.settings, "Setting")
-    )
+    @Composable
+    fun ProfileScreen1() {
+        data class Product(val image: Int, val label: String)
+        val listData = listOf(
+            Product(R.drawable.baseline_heart_broken_24, "Favorites"),
+            Product(R.drawable.baseline_local_shipping_24, "Orders"),
+            Product(R.drawable.baseline_list_24, "Shippings"),
+            Product(R.drawable.card, "Card"),
+            Product(R.drawable.pic, "Picture"),
+            Product(R.drawable.settings, "Setting")
+        )
 
-    LazyColumn(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        item {
-            Row(
-                modifier = Modifier.fillMaxWidth().padding(16.dp),
-                horizontalArrangement = Arrangement.Start,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.baseline_arrow_back_ios_24),
-                    contentDescription = null
-                )
-                Spacer(modifier = Modifier.weight(1f))
-                Icon(
-                    painter = painterResource(R.drawable.baseline_settings_24),
-                    contentDescription = null
-                )
-            }
-
-            Row(
-                modifier = Modifier.fillMaxWidth().padding(16.dp),
-                horizontalArrangement = Arrangement.Start,
-                verticalAlignment = Alignment.Top
-            ) {
-                Image(
-                    painter = painterResource(R.drawable.p1),
-                    contentDescription = null,
-                    contentScale = ContentScale.Companion.Crop,
-                    modifier = Modifier.Companion.size(75.dp).clip(CircleShape)
-                )
-                Spacer(modifier = Modifier.width(15.dp))
-                Column(
-                    modifier = Modifier.fillMaxSize(),
-                    verticalArrangement = Arrangement.spacedBy(5.dp)
+        LazyColumn(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+            item {
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(16.dp),
+                    horizontalArrangement = Arrangement.Start,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Spacer(modifier = Modifier.padding(top = 6.dp))
-                    Text("Pragyan Khati", fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                    Text("Manage Profile", color = Orange, fontWeight = FontWeight.Bold)
+                    Icon(
+                        painter = painterResource(R.drawable.baseline_arrow_back_ios_24),
+                        contentDescription = null
+                    )
+                    Spacer(modifier = Modifier.weight(1f))
+                    Icon(
+                        painter = painterResource(R.drawable.baseline_settings_24),
+                        contentDescription = null
+                    )
                 }
-            }
 
-            HorizontalDivider()
-            Spacer(modifier = Modifier.padding(top = 15.dp))
-
-            LazyRow(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                items(listData) { product ->
-                    Card(
-                        modifier = Modifier.size(100.dp),
-                        shape = RoundedCornerShape(10.dp),
-                        elevation = CardDefaults.cardElevation(10.dp)
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(16.dp),
+                    horizontalArrangement = Arrangement.Start,
+                    verticalAlignment = Alignment.Top
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.p1),
+                        contentDescription = null,
+                        contentScale = ContentScale.Companion.Crop,
+                        modifier = Modifier.Companion.size(75.dp).clip(CircleShape)
+                    )
+                    Spacer(modifier = Modifier.width(15.dp))
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        verticalArrangement = Arrangement.spacedBy(5.dp)
                     ) {
-                        Column(
-                            modifier = Modifier.fillMaxSize(),
-                            verticalArrangement = Arrangement.Center,
-                            horizontalAlignment = Alignment.CenterHorizontally
+                        Spacer(modifier = Modifier.padding(top = 6.dp))
+                        Text("Pragyan Khati", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                        Text("Manage Profile", color = Orange, fontWeight = FontWeight.Bold)
+                    }
+                }
+
+                HorizontalDivider()
+                Spacer(modifier = Modifier.padding(top = 15.dp))
+
+                LazyRow(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                    items(listData) { product ->
+                        Card(
+                            modifier = Modifier.size(100.dp),
+                            shape = RoundedCornerShape(10.dp),
+                            elevation = CardDefaults.cardElevation(10.dp)
                         ) {
-                            Icon(
-                                painter = painterResource(product.image),
-                                contentDescription = null,
-                                tint = Color.Red,
-                                modifier = Modifier.size(30.dp)
-                            )
-                            Text(product.label, fontWeight = FontWeight.Bold)
-                            Text(
-                                "Click to check",
-                                color = Orange,
-                                textDecoration = TextDecoration.Companion.Underline
-                            )
+                            Column(
+                                modifier = Modifier.fillMaxSize(),
+                                verticalArrangement = Arrangement.Center,
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                Icon(
+                                    painter = painterResource(product.image),
+                                    contentDescription = null,
+                                    tint = Color.Red,
+                                    modifier = Modifier.size(30.dp)
+                                )
+                                Text(product.label, fontWeight = FontWeight.Bold)
+                                Text(
+                                    "Click to check",
+                                    color = Orange,
+                                    textDecoration = TextDecoration.Companion.Underline
+                                )
+                            }
                         }
                     }
                 }
+
+                Spacer(modifier = Modifier.padding(top = 26.dp))
+                Text("Order Highlights")
+                Spacer(modifier = Modifier.padding(top = 10.dp))
             }
 
-            Spacer(modifier = Modifier.padding(top = 26.dp))
-            Text("Order Highlights")
-            Spacer(modifier = Modifier.padding(top = 10.dp))
-        }
-
-        items(listData) { product ->
-            Card(
-                modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
-                shape = RoundedCornerShape(10.dp),
-                elevation = CardDefaults.cardElevation(10.dp)
-            ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth().padding(15.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+            items(listData) { product ->
+                Card(
+                    modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+                    shape = RoundedCornerShape(10.dp),
+                    elevation = CardDefaults.cardElevation(10.dp)
                 ) {
-                    Image(
-                        painter = painterResource(product.image),
-                        modifier = Modifier.size(50.dp).clip(CircleShape),
-                        contentScale = ContentScale.Companion.Crop,
-                        contentDescription = null
-                    )
-                    Text(product.label, fontWeight = FontWeight.Bold)
+                    Row(
+                        modifier = Modifier.fillMaxWidth().padding(15.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(10.dp)
+                    ) {
+                        Image(
+                            painter = painterResource(product.image),
+                            modifier = Modifier.size(50.dp).clip(CircleShape),
+                            contentScale = ContentScale.Companion.Crop,
+                            contentDescription = null
+                        )
+                        Text(product.label, fontWeight = FontWeight.Bold)
+                    }
                 }
             }
         }
     }
-}
 
 
